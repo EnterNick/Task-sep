@@ -9,23 +9,48 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="/">Наше приложение</a>
-        {% if current_user.is_authenticated %}
-    <a class="navbar-brand" href="/logout">{{ current_user.name }}</a>
-{% else %}
-    <p>
+    <nav class="navbar">
+        <a class="brand" href="/">Наше приложение</a>
+        <!---{% if current_user.is_authenticated %}--->
+    <a class="brand" href="/logout">{{ current_user.name }}</a>
+<!---{% else %}-->
+    <p class="buttons">
         <a class="c-button" href="/register">Зарегистрироваться</a>
         <a class="c-button" href="/login">Войти</a>
     </p>
-{% endif %}
-        {% if current_user.is_authenticated %}
-    <a href="news" class="btn btn-secondary">Добавить новость</a>
-{% endif %}
+<!---{% endif %}--->
+        <!---{% if current_user.is_authenticated %}-->
+    <!---<a href="news" class="btn btn-secondary">Добавить новость</a>--->
+<!---{% endif %}--->
     </nav>
 </header>
 <main role="main" class="container">
     {% block content %}{% endblock %}
+    <form class="form" action="">
+        <p class="text-bls">Фамилия</p>
+        <input class="input-text" type="text">
+        <p class="text-bls">Место проживания</p>
+        <select class="input-text" name="city" id="city-select">
+            <option value="">-- Выберите город --</option>
+            <option value="petersburg">Санкт-Петербург</option>
+            <option value="samara">Самара</option>
+            <option value="perm">Пермь</option>
+            <option value="novosibirsk">Новосибирск</option>
+          </select>
+    </form>
 </main>
+
+<footer class="footbar">
+    <div style="display: flex; flex-direction: column; align-items: center;">
+        <p style="font-size: 15px; font-family: 'Montserrat', sans-serif;">Контактная информация</p>
+        <div class="info">
+            <div><p class="text-info">+7 919 636-77-33</p>
+                <p class="text-info">alabugaskills@gmail.com</p></div>
+            <a class="icon" href="https://wa.me/79196367733"><img src="whatsapp.png" alt="whatsapp"></a>
+            <a class="icon" href="https://t.me/@blogmoggangalab"><img src="tg.png" alt="tg"></a>
+            <a class="icon" href="https://discordapp.com/users/1057644540900691978"><img src="ds.png" alt="ds"></a>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
