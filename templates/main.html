@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="container" style="background: url({{ url_for('static', filename='back.jpg') }}) no-repeat center /cover">
+    <div style="display: flex; justify-content: center; align-items: center; margin-right: 28px;">
+        <div style="display: flex; justify-content: center; align-items: center; margin-right: 28px; background-color: #fff; border-radius: 10px; border: 1px solid #000;">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" style="padding-right: 5px;">
+            <a class="brand" href="/" style="padding-right: 5px;">SkillsTogether</a>
+        </div>
+    </div>
+    <a class="c-button" href="/index" style="font-size: 20px; padding: 22px; margin-top: 170px;">
+        Искать единномышленников <img src="{{ url_for('static', filename='icon.png') }}" alt="icon"></a>
+</section>
+{% endblock %}

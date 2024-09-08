@@ -18,13 +18,17 @@ def main():
     app.run()
 
 
-@app.route("/")
-@app.route('/#')
+@app.route('/index')
 def index():
     db_sess = db_session.create_session()
     skills = db_sess.query(Skills).filter(Skills.is_private)
     db_sess.close()
     return render_template("index.html", skills=skills, current_user=current_user)
+
+
+@app.route('/')
+def mainpage():
+    return render_template('main.html', current_user=current_user)
 
 
 @app.route('/login', methods=['GET', 'POST'])
