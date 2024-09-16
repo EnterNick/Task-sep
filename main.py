@@ -18,17 +18,17 @@ def main():
     app.run()
 
 
-@app.route('/index')
+@app.route('/main')
 def index():
     db_sess = db_session.create_session()
     skills = db_sess.query(Skills).filter(Skills.is_private)
     db_sess.close()
-    return render_template("index.html", skills=skills, current_user=current_user)
+    return render_template("main.html", skills=skills, current_user=current_user)
 
 
 @app.route('/')
 def mainpage():
-    return render_template('main.html', current_user=current_user)
+    return render_template('index.html', current_user=current_user)
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -56,26 +56,36 @@ def logout():
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegisterForm()
-    if form.validate_on_submit():
+    print(form.tel.data)
+    if form.is_submitted():
         if form.password.data != form.password_again.data:
             return render_template('register.html', title='Регистрация',
                                    form=form,
                                    message="Пароли не совпадают")
         db_sess = db_session.create_session()
-        if db_sess.query(User).filter(User.email == form.email.data).first():
+        if db_sess.query(User).filter(User.tel == form.tel.data).first():
             return render_template('register.html', title='Регистрация',
                                    form=form,
                                    message="Такой пользователь уже есть")
-        user = User(
-            name=form.name.data,
-            email=form.email.data,
-            about=form.about.data
-        )
+        user = User()
+        user.name = form.name.data
+        user.tel = form.tel.data
+        user.home = form.home.data
         user.set_password(form.password.data)
         db_sess.add(user)
         db_sess.commit()
         return redirect('/login')
     return render_template('register.html', title='Регистрация', form=form, current_user=current_user)
+
+
+@app.route('/about')
+def about_us():
+    return render_template('about.html', title='О нас', current_user=current_user)
+
+
+@app.route('/newsletter')
+def news():
+    return render_template('sub.html', title='О нас', current_user=current_user)
 
 
 @login_manager.user_loader

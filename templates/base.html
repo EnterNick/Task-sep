@@ -1,68 +1,77 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="./static/style.css">
     <title>{{title}}</title>
 </head>
+
 <body>
+    <header class="header">
+        <div class="container">
+            <div class="header__wrapper">
+                <a href="/" class="header__logo">
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="logo">
+                    Skillswap
+                </a>
 
+                {% if current_user.is_authenticated %}
+                <a href="/logout" class="header__current-user">Username</a>
+                {% endif %}
 
-<header>
-    <nav class="navbar">
-        <div style="display: flex; justify-content: center; align-items: center; margin-left: 28px;">
-            <img src="{{ url_for('static', filename='logo.png') }}" alt="logo">
-            <a class="brand" href="/">SkillsTogether</a>
-        </div>
-        {% if current_user.is_authenticated %}
-    <a class="brand" href="/logout">{{ current_user.name }}</a>
-{% else %}
-    <div>
-        <a class="c-button" href="/register">Зарегистрироваться</a>
-        <a class="c-button" href="/login">Войти</a>
-    </div>
-{% endif %}
-        {% if current_user.is_authenticated %}
-            <a href="skills" class="c-button">Добавить навык</a>
-
-{% endif %}
-    </nav>
-</header>
-
-
-<main role="main" class="container">
-    {% block content %}{% endblock %}
-</main>
-
-
-<footer class="footbar">
-    <div class="sections">
-        <a class="text-sections" href="/about">О нас</a>
-        <a class="text-sections" href="/sub">Рассылка</a>
-        <a class="text-sections" href="/feedbacks">Отзывы</a>
-        <a class="text-sections" href="/advantages">Преимущества</a>
-    </div>
-
-    <div style="display: flex; flex-direction: column; align-items: center;">
-        <p style="font-size: 15px;">Контактная информация</p>
-
-        <div class="info">
-
-            <div class="info" style="flex-direction: column; align-items: end; justify-content: start;">
-                <p class="text-info">+7 919 636-77-33</p>
-                <p class="text-info">alabugaskills@gmail.com</p>
+                <nav class="header__nav">
+                    {% if current_user.is_authenticated %}
+                    <a href="/add-skill" class="btn">Добавить навык</a>
+                    {% else %}
+                    <a href="/register" class="btn">Регистрация</a>
+                    <a href="/login" class="btn">Вход</a>
+                    {% endif %}
+                </nav>
             </div>
-
-            <a class="icon" href="https://wa.me/79196367733"><img src="{{ url_for('static', filename='whatsapp.png') }}" alt="whatsapp"></a>
-            <a class="icon" href="https://t.me/@blogmoggangalab"><img src="{{ url_for('static', filename='tg.png') }}" alt="tg"></a>
-            <a class="icon" href="https://discordapp.com/users/1057644540900691978"><img src="{{ url_for('static', filename='ds.png') }}" alt="ds"></a>
         </div>
-    </div>
+    </header>
 
-</footer>
+    <main class="main">
+        <div class="container">
+            <div class="main__wrapper">
+                {% block content %} {% endblock %}
+            </div>
+        </div>
+    </main>
 
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__wrapper">
+                <nav class="footer__nav">
+                    <a href="/advantages" class="footer__link">Преимущества</a>
+                    <a href="/feedbacks" class="footer__link">Отзывы</a>
+                    <a href="/about" class="footer__link">О нас</a>
+                    <a href="/newsletter" class="footer__link">Рассылка</a>
+                </nav>
 
+                <div class="footer__info">
+                    Контактная информация
+                    <div class="footer__c-m-wrapper">
+                        <div class="footer__contacts-wrapper">
+                            <div class="footer__contacts">
+                                +7 919 636-77-33
+                            </div>
+                            <div class="footer__contacts">
+                                alabugaskills@gmail.com
+                            </div>
+                        </div>
+
+                        <div class="footer__medias">
+                            <a href="/https://wa.me/79196367733" class="footer__link"><img src="./static/img/whatsapp.svg" alt="whastsup"></a>
+                            <a href="https://t.me/@blogmoggangalab" class="footer__link"><img src="./static/img/telegram.svg" alt="tlegram"></a>
+                            <a href="https://discordapp.com/users/1057644540900691978" class="footer__link"><img src="./static/img/discord.svg" alt="discord"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
+
 </html>
