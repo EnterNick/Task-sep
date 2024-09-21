@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Профиль</h2>
+<div class="profile">
+    <div class="profile__name-and-icon">
+        <img src="{{ url_for('static', filename='profile.svg') }}" alt="profile-img" style="border-radius: 50%;">
+        <h2 class="profile__name">{{ user.name }}</h2>
+    </div>
+
+    <div class="profile__info">
+        <p class="profile__tel">Телефонный номер: {{ user.tel }}</p>
+        <hr>
+        <p class="profile__home">Место проживания: {{ user.home }}</p>
+        <hr>
+        <p class="profile__email">Электронная почта: {{ user.email }}</p>
+    </div>
+</div>
+{% if current_user.name == user.name %}
+<a href="/edit-profile" class="btn">Изменить профиль</a>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Добавление навыка</h1>
+<form action="" method="post" class="form">
+    <fieldset class="form__fieldset">
+        {{ form.hidden_tag() }}
+        <p>
+            <label class="form__text">Заголовок</label><br>
+            {{ form.title(class="form__input") }}<br>
+        </p>
+        <p>
+            <label class="form__text">Содержание</label><br>
+            {{ form.content(class="form__input") }}<br>
+        </p>
+        <p>{{ form.submit(type="submit", class="btn") }}</p>
+        {{message}}
+    </fieldset>
+</form>
+{% endblock %}

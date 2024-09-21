@@ -1,1 +1,21 @@
+{% extends "base.html" %}
 
+{% block content %}
+
+<div class="feedbacks-section">
+{% for item in feedbacks %}
+    <div class="feedbacks-section__feedback">
+        <img src="./static/profile.svg" alt="profile" class="profile-img">
+        <div class="feedbacks-section__text-block">
+            <a href="/profile/{{item.user.name}}" class="feedbacks-section__title">{{ item.user.name }}</a>
+            <p class="feedbacks-section__text">{{ item.content }}</p>
+        </div>
+    </div>
+{% endfor %}
+</div>
+<form action="" method="post" class="feedbacks__form">
+    {{ form.input(class="feedbacks__input") }}
+    {{ form.submit(class="feedbacks__submit") }}
+</form>
+
+{% endblock %}

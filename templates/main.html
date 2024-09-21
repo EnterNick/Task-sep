@@ -2,24 +2,26 @@
 
 {% block content %}
 
-<form action="get" class="search-form">
+<form action="" method="post" class="search-form">
     <fieldset class="search-form__fieldset">
-        <input type="search" placeholder="Искать здесь..." name="search" class="search-form__search">
-        <button type="submit" class="search-form__btn">🔍</button>
+        {{ form.search(class="search-form__search") }}
+        {{ form.submit(type="submit", class="search-form__btn") }}
     </fieldset>
 </form>
-{% for item in skills %}
 <section class="skills">
     <div class="skills__wrapper">
-        <h2 class="skills__title">Навыки Абитуриентов</h2>
+        <h2 class="skills__title">Навыки Пользователей</h2>
+{% for item in skills %}
+
         <div class="skills__skill">
-            <div class="skills__title-wrapper"><h2 class="skills__skill-title">{{item.title}}</h2> <a href="/">#teg</a></div>
+            <div class="skills__title-wrapper"><h2 class="skills__skill-title">{{item.title}}</h2></div>
             <p class="skills__content">{{item.content}}</p>
-            <p class="skills__autor">Автор - {{item.user.name}}, Дата написания - {{item.created_date}}</p>
+            <a href="/profile/{{item.user.name}}" class="skills__autor">Автор - {{item.user.name}}, Дата написания - {{item.created_date}}</a>
         </div>
+{% endfor %}
+
     </div>
 </section>
-{% endfor %}
 
 
 

@@ -4,9 +4,8 @@
 <form action="" class="form" method="post">
     <h2>{{ title }}</h2>
     <fieldset class="form__fieldset">
-       {{ form.name(class="form__input", placeholder="Фамилия и Имя") }}
-        {{ form.tel(type="tel", placeholder="Номер телефона", class="form__input", pattern="8[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}") }}
-        {{ form.home(class="form__input") }}
+       {{ form.name(class="form__input", placeholder="Фамилия и Имя", value=current_user.name) }}
+        {{ form.home(class="form__input", value="{{ current_user.home }}") }}
         {{ form.password(minlength="8", type="password", placeholder="Пароль", class="form__input") }}
         {{ form.password_again(minlength="8", type="password", placeholder="Повторите пароль", class="form__input") }}
         {{ form.submit(class="btn btn_submit", type="submit") }}

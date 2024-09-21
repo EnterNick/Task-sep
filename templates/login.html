@@ -1,12 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form action="get" class="form">
+<form action="" class="form" method="post">
     <h2>Авторизация</h2>
     <fieldset class="form__fieldset">
-        <input required type="tel" name="tel" id="tel" placeholder="Номер телефона" class="form__input"/>
-        <input minlength="8" required type="password" name="pass" id="pass" placeholder="Пароль" class="form__input"/>
-        <button class="btn btn_submit" type="submit">Вход</button>
+        {{ form.tel(placeholder="Номер телефона", class="form__input", type="tel") }}
+        {{ form.password(minlength="8", type="password", placeholder="Пароль", class="form__input") }}
+        <div class="form__remember-me">
+            {{ form.remember_me(type="checkbox") }}
+            <label for="remember_me">Запомнить меня</label>
+        </div>
+        {{ form.submit(class="btn btn_submit", type="submit") }}
+        <p class="form__text">{{ message }}</p>
     </fieldset>
 </form>
 {% endblock %}
