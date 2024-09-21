@@ -1,0 +1,9 @@
+<svg width="50.00000000000001" height="50.00000000000001" xmlns="http://www.w3.org/2000/svg">
+ <g>
+  <title>Layer 1</title>
+  <line stroke-opacity="0.85" stroke="#0008ff" stroke-width="5" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_1" y2="54.28829" x2="-4.07207" y1="0.10811" x1="50.14414" fill="none"/>
+  <line stroke="#ff0000" stroke-opacity="0.85" stroke-width="5" stroke-linecap="undefined" stroke-linejoin="undefined" id="svg_2" y2="51.40541" x2="51.06307" y1="-0.34234" x1="-0.48648" fill="none"/>
+  <ellipse ry="10.63063" rx="11.12613" id="svg_3" cy="24.63964" cx="25.22523" stroke-opacity="0.85" stroke-width="5" stroke="#90ff00" fill="none"/>
+ </g>
+
+</svg>
